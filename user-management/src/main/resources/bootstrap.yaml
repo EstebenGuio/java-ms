@@ -4,14 +4,12 @@ spring:
   cloud:
     config:
       enabled: true
-      uri: http://0.0.0.0:8003
-
-jpa:
-  hibernate:
-    ddl-auto: create-drop
-  properties:
-    hibernate:
-      connection:
-        charSet: UTF-8
-      hbm2ddl:
-        import_files_sql_extractor: org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor
+      uri: http://0.0.0.0:8000
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate.ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        connection.charSet: UTF-8
+        hbm2ddl.import_files_sql_extractor: org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor

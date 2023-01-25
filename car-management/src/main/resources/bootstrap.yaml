@@ -4,7 +4,7 @@ spring:
   cloud:
     config:
       enabled: true
-      uri: http://0.0.0.0:8002
+      uri: http://0.0.0.0:8000
   datasource:
     driverClassName: org.h2.Driver
   jpa:

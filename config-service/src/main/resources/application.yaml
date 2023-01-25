@@ -7,6 +7,6 @@ spring:
         git:
           default-label: master
           uri: https://github.com/EstebenGuio/java-ms
-          search-path: config-data
+          search-paths: config-data
   application:
     name: config-server
