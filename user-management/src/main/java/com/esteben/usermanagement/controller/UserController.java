@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/users")
@@ -47,21 +48,38 @@ public class UserController {
 
     }
 
-    @GetMapping("/cars/{uid}")
-    public ResponseEntity<List<Car>> getCars(@PathVariable int uid) {
-        List<Car> cars = userService.getCars(uid);
-        if (cars.isEmpty())
+    @GetMapping("/rt/cars/{uid}")
+    public ResponseEntity<List<Car>> getCarsRT(@PathVariable int uid) {
+        List<Car> cars = userService.getCarsRT(uid);
+        if (cars == null || cars.isEmpty())
             return ResponseEntity.noContent().build();
         return ResponseEntity.ok(cars);
     }
 
 
-    @GetMapping("/bikes/{uid}")
-    public ResponseEntity<List<Bike>> getBikes(@PathVariable int uid) {
-        List<Bike> bikes = userService.getBikes(uid);
+    @GetMapping("/rt/bikes/{uid}")
+    public ResponseEntity<List<Bike>> getBikesRT(@PathVariable int uid) {
+        List<Bike> bikes = userService.getBikesRT(uid);
         if (bikes.isEmpty())
             return ResponseEntity.noContent().build();
         return ResponseEntity.ok(bikes);
     }
 
+    @PostMapping("/feign/car/{uid}")
+    public ResponseEntity<Car> saveCarFeign(@PathVariable int uid, @RequestBody Car car) {
+        Car carnew = userService.saveCarFeign(uid, car);
+        return ResponseEntity.ok(carnew);
+    }
+
+    @PostMapping("/feign/bike/{uid}")
+    public ResponseEntity<Bike> saveBikeFeign(@PathVariable int uid, @RequestBody Bike bike) {
+        Bike bikeNew = userService.saveBikeFeign(uid, bike);
+        return ResponseEntity.ok(bikeNew);
+    }
+
+    @GetMapping("/getall/{uid}")
+    public ResponseEntity<Map<String, Object>> getUserVehicles(@PathVariable int uid) {
+        Map<String, Object> result = userService.userVehicles(uid);
+        return ResponseEntity.ok(result);
+    }
 }
