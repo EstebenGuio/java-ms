@@ -49,7 +49,7 @@ public class UserService {
      * @return {car} car obj
      */
     public List<Car> getCarsRT(int id) {
-        List<Car> cars = restTemplate.getForObject("http://0.0.0.0:8002/cars/uid/" + id, List.class);
+        List<Car> cars = restTemplate.getForObject("http://car-management-ms:8002/cars/uid/" + id, List.class);
         return cars;
     }
 
@@ -60,7 +60,7 @@ public class UserService {
      * @return {Bike} bike obj
      */
     public List<Bike> getBikesRT(int id) {
-        List<Bike> bikes = restTemplate.getForObject("http://0.0.0.0:8001/bikes/uid/" + id, List.class);
+        List<Bike> bikes = restTemplate.getForObject("http://bike-management-ms:8001/bikes/uid/" + id, List.class);
         return bikes;
     }
 
@@ -111,7 +111,7 @@ public class UserService {
             result.put("bikes", "user has not bikes");
         else
             result.put("bikes", bikes);
-        
+
         return result;
     }
 }
