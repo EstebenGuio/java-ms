@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: gateway-management
+  cloud:
+    config:
+      enabled: true
+      uri: http://0.0.0.0:8001
