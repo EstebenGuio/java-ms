@@ -4,4 +4,4 @@ spring:
   cloud:
     config:
       enabled: true
-      uri: http://0.0.0.0:8001
+      uri: http://0.0.0.0:8000
